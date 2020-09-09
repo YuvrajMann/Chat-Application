@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;0,900;1,500;0,600&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#root {
+    background-color: #0D1B2A;
+}
+
+.App .navbar {
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.822);
+    background-color: #1B263B;
+    padding-top: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.navbar svg {
+    font-size: 40px;
+    margin-right: 8px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    min-height: 92.6vh;
+    align-items: center;
+}
+
+.wrapper h1 {
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper svg {
+    color: rgba(255, 255, 255, 0.829);
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+.credentials {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.781);
+}
+
+.credentials div:nth-child(1) label {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.credentials div input {
+    width: 300px;
+    height: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 5px;
+    outline: none;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 3px solid #778DA9;
+    color: black;
+    transition: all 0.2s ease-in-out;
+}
+
+.credentials div input:focus {
+    border-color: #E0E1DD;
+}
+
+.credentials div:nth-child(2) label {
+    margin-right: 40px;
+    font-size: 20px;
+}
+
+
+input[type="submit"] {
+    width: 100px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.801);
+    background-color: transparent;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+    margin-top: 20px;
+    padding: 5px;
+    font-size: 1.3em;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    margin-left: 10px;
+    outline: none;
+}
+
+input:hover[type="submit"] {
+
+    background-color: #415A77;
+}

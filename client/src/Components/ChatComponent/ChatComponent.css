@@ -1,0 +1,131 @@
+.input-area input[type="text"] {
+  width: 108%;
+  height: 40px;
+  border-radius: 200px 0px 0px 200px;
+  outline: none;
+  border: 3px solid #244B75;
+  padding-left: 20px;
+}
+
+.input-area input[type="text"]:focus {
+  border: 3px solid #0E1C2A;
+}
+
+button#chat {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 3px solid #0E1C2A;
+  border-radius: 0px 200px 200px 0px;
+  cursor: pointer;
+  font-size: 1.4em;
+  color: white;
+  background-color: #0E1C2A;
+  transition: all 0.2s ease-in-out;
+}
+
+button#chat:hover {
+  color: #0E1C2A;
+
+  background-color: white;
+}
+
+button#chat svg {
+  margin-left: -8px;
+
+}
+
+.chat-area {
+  height: 81.88vh;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+
+.card .card-footer {
+  background-color: #518CCA;
+}
+
+.card .chat-area .row {
+  padding-right: 4px;
+}
+
+
+
+
+.chat-area .u_message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.chat-area .p_message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.u_message-bubble,
+.p_message-bubble {
+  max-width: 70%;
+  padding: 10px;
+  margin: 10px 10px 20px;
+  text-align: left;
+}
+
+.u_message-bubble {
+  background-color: #0E1C2A;
+  border-radius: 6px 0px 6px 6px;
+  color: white;
+
+}
+
+.p_message-bubble {
+  background-color: #9CBDE1;
+  border-radius: 0px 6px 6px 6px;
+}
+
+.chat-area p {
+  position: relative;
+}
+
+/* BUBBLE ARROW SENT */
+.p_message p:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 0px;
+  height: 0px;
+  border-top: 0px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 10px solid #9CBDE1;
+}
+
+/* BUBBLE ARROW RECEIVED */
+.u_message p:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -6px;
+  width: 0px;
+  height: 0px;
+  border-top: 0px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 10px solid #0E1C2A;
+}
