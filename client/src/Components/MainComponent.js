@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AuthComponent from "./AuthenticationComponent/AuthenticationComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import ChatComponent from "./ChatComponent/ChatComponent";
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +21,11 @@ class Main extends Component {
         <Switch>
           <Route
             path="/"
+            exact
+            component={() => <AuthComponent></AuthComponent>}
+          ></Route>
+          <Route
+            path="/login"
             exact
             component={() => <AuthComponent></AuthComponent>}
           ></Route>

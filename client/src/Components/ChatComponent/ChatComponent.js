@@ -5,19 +5,26 @@ import "./ChatComponent.css";
 import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPaperPlane,
+  faSignOutAlt,
+  faThumbsDown,
+} from "@fortawesome/free-solid-svg-icons";
+import InfoBar from "./InfoBarComponent";
+import { Redirect } from "react-router-dom";
 let socket;
 class ChatComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       users: [],
-      messages: [],
       chatMessage: "",
       chatMessages: [],
+      exited: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleExit = this.handleExit.bind(this);
   }
 
   componentDidMount() {
@@ -27,7 +34,12 @@ class ChatComponent extends Component {
       roomId: this.props.roomId,
     });
     socket.on("newUser", ({ userName, roomId, msg }) => {
-      this.setState({ messages: this.state.messages.concat(msg) });
+      this.setState({
+        chatMessages: this.state.chatMessages.concat({
+          username: "admin",
+          message: msg,
+        }),
+      });
     });
     socket.on("chat-message", ({ userName, chatMessage }) => {
       this.setState({
@@ -36,6 +48,9 @@ class ChatComponent extends Component {
           message: chatMessage,
         }),
       });
+    });
+    socket.on("disconnect", () => {
+      console.log("Disconnected!");
     });
   }
   handleChange = (event) => {
@@ -47,6 +62,7 @@ class ChatComponent extends Component {
         username: this.props.username,
         message: this.state.chatMessage,
       }),
+      chatMessage: "",
     });
     socket.emit("chat-message", {
       userName: this.props.username,
@@ -54,14 +70,34 @@ class ChatComponent extends Component {
       roomId: this.props.roomId,
     });
   };
+
+  handleExit = () => {
+    console.log(this.props);
+    if (socket) {
+      socket.disconnect();
+      this.setState({
+        exited: true,
+      });
+    }
+  };
   render() {
+    if (this.state.exited) {
+      return <Redirect to="/login" />;
+    }
     return (
       <>
         <div className="container">
           <div className="row">
             <div className=" col-md-10 mx-auto">
               <Card>
-                <CardHeader>Chat.io</CardHeader>
+                <CardHeader>
+                  <InfoBar
+                    handleExit={() => {
+                      this.handleExit();
+                    }}
+                    roomId={this.props.roomId}
+                  ></InfoBar>
+                </CardHeader>
                 <CardBody>
                   <div className="chat-area">
                     <ChatRender

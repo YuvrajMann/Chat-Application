@@ -20,16 +20,23 @@ io.on("connection", (socket) => {
     socket.to(roomId).broadcast.emit("newUser", {
       userName: userName,
       roomId: roomId,
-      msg: `${userName} joined the room ${roomId}`,
+      msg: `${userName} joined the room`,
+    });
+    socket.on("disconnect", () => {
+      console.log(`${userName} disconnected from room ${roomId}`);
+      socket.to(roomId).broadcast.emit("chat-message", {
+        userName: "admin",
+        chatMessage: `${userName} left the room`,
+      });
     });
   });
+
   socket.on("chat-message", ({ userName, message, roomId }) => {
     socket.to(roomId).broadcast.emit("chat-message", {
       userName: userName,
       chatMessage: message,
     });
   });
-  socket.on("disconnect", () => {});
 });
 
 server.listen(portNumber, () => {
