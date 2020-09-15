@@ -2,7 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
 export const ChatRender = (props) => {
-  console.log(props);
   var date = new Date();
   const className_value = (user_name) => {
     if (user_name === "admin") {

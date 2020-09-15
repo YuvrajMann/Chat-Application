@@ -51,6 +51,10 @@ io.on("connection", (socket) => {
       chatMessage: message,
     });
   });
+
+  socket.on("getParticipants", () => {
+    socket.emit("getParticipants", Users.getUsers());
+  });
 });
 
 server.listen(portNumber, () => {

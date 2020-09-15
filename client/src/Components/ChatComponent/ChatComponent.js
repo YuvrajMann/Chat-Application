@@ -21,10 +21,12 @@ class ChatComponent extends Component {
       chatMessage: "",
       chatMessages: [],
       exited: false,
+      users: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleExit = this.handleExit.bind(this);
+    this.handleGetParticipants = this.handleGetParticipants.bind(this);
   }
 
   componentDidMount() {
@@ -52,7 +54,19 @@ class ChatComponent extends Component {
     socket.on("disconnect", () => {
       console.log("Disconnected!");
     });
+
+    socket.on("getParticipants", (Users) => {
+      Users.map((user) => {
+        this.setState({
+          users: Users,
+        });
+      });
+    });
   }
+
+  handleGetParticipants = (event) => {
+    socket.emit("getParticipants", {});
+  };
   handleChange = (event) => {
     this.setState({ chatMessage: event.target.value });
   };
@@ -72,7 +86,6 @@ class ChatComponent extends Component {
   };
 
   handleExit = () => {
-    console.log(this.props);
     if (socket) {
       socket.disconnect();
       this.setState({
@@ -96,6 +109,8 @@ class ChatComponent extends Component {
                       this.handleExit();
                     }}
                     roomId={this.props.roomId}
+                    handleGetParticipants={() => this.handleGetParticipants()}
+                    participants={this.state.users}
                   ></InfoBar>
                 </CardHeader>
                 <CardBody>

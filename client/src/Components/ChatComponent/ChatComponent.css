@@ -240,3 +240,46 @@ button#chat svg {
 .infos h3 button svg {
   font-size: 30px;
 }
+
+#header {
+  margin-left: 170px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+}
+
+.modal-header {
+  background-color: #0d1b2a;
+  color: white;
+}
+
+.modal-header button {
+  color: white;
+}
+
+.modal-header button:hover {
+  color: white;
+}
+
+.modal-body {
+  height: 70vh;
+  overflow-y: scroll;
+}
+
+.modal-body .specific_user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 2px 2px;
+  margin-bottom: 9px;
+}
+
+.modal-body .specific_user .logo {
+  font-size: 20px;
+  margin-right: 10px;
+
+}
+
+.modal-body .specific_user .user-name {
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+}
