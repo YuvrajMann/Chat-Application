@@ -269,14 +269,15 @@ button#chat svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 2px 2px 2px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.815);
+  background-color: #518cca;
   margin-bottom: 9px;
 }
 
 .modal-body .specific_user .logo {
   font-size: 20px;
   margin-right: 10px;
-
 }
 
 .modal-body .specific_user .user-name {
