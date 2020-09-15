@@ -1,6 +1,8 @@
 ### Chat-Application
 This is a simple chat application created using __React.js /Socket.io /Node.js /Express.js__.
 
+![alt text](https://github.com/YuvrajMann/Chat-Application/blob/master/images/Screenshot%20(168).png "Chat Application")
+
 To make it run on your PC follow following steps:-
 
 1. Clone the file into your PC using command __git colne__.
