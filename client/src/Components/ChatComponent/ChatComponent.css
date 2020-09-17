@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
+.chat-component{
+  height:100vh;
+  display: flex;
+  align-items: center;
+}
+
 .input-area input[type="text"] {
   width: 108%;
   height: 40px;

@@ -98,7 +98,7 @@ class ChatComponent extends Component {
       return <Redirect to="/login" />;
     }
     return (
-      <>
+      <div className="chat-component">
         <div className="container">
           <div className="row">
             <div className=" col-md-10 mx-auto">
@@ -152,7 +152,8 @@ class ChatComponent extends Component {
             </div>
           </div>
         </div>
-      </>
+        </div>
+      
     );
   }
 }
