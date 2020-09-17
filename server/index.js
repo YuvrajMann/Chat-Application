@@ -5,7 +5,8 @@ const portNumber = "5000";
 var server = http.createServer(app);
 const io = require("socket.io")(server);
 const Users = require("./users");
-
+const cors=require('cors');
+app.use('cors');
 io.on("connection", (socket) => {
   socket.on("join", ({ userName, roomId }) => {
     socket.join(roomId);
