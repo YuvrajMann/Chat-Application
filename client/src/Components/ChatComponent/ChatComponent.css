@@ -6,6 +6,9 @@
 }
 .card-body{
   padding: 0px;
+  height: -moz-calc(100% - (73px + 28px));
+  height: -webkit-calc(100% - (73px + 28px));
+  height: calc(100% - (73px + 28x));
 }
 .card{
   height: 100vh;
@@ -13,6 +16,7 @@
 .card-footer{
   position: absolute;
   bottom: 0px;
+
 }
 .input-area input[type="text"] {
   width: 108%;
@@ -45,13 +49,16 @@
 }
 
 .chat-area {
-  height: 85.98vh;
+  height: 100%;
   overflow-y: scroll;
-  margin-bottom: 40px;
+  height: -moz-calc(100vh - (73px));
+  height: -webkit-calc(100vh - (73px));
+  height: calc(100vh - (133px));
+ 
 }
 .chat-area>div{
   padding-right: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 5px;
 }
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -169,6 +176,7 @@
 .card-header {
   background-color: #518cca;
   color: white;
+  height: 73px;
 }
 
 .card-header h3 svg:nth-child(2) {
