@@ -26,7 +26,7 @@ class AuthComponent extends Component {
   }
   render() {
     return (
-      <>
+      <div className="login_wrapper">
         <div className="navbar">
           <FontAwesomeIcon icon={faComments} />
           <span>Chat.io</span>
@@ -36,21 +36,23 @@ class AuthComponent extends Component {
           <h1>LOGIN</h1>
           <div className="credentials">
             <div>
-              <label for="UserName">USER NAME</label>
+              
               <input
                 type="text"
                 name="userName"
                 id="userName"
+                placeholder="User Name"
                 value={this.state.username}
                 onChange={this.handelUserNameChange}
               ></input>
             </div>
             <div>
-              <label for="RoomId">ROOM ID</label>
+             
               <input
                 type="text"
                 name="RoomId"
                 id="RoomId"
+                placeholder="Room Id"
                 value={this.state.roomId}
                 onChange={this.handelroomIdChange}
               ></input>
@@ -61,7 +63,7 @@ class AuthComponent extends Component {
             <input type="submit" value="ENTER"></input>
           </Link>
         </div>
-      </>
+      </div>
     );
   }
 }
