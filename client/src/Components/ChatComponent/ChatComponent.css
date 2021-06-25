@@ -1,11 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
 .chat-component{
-  height:100vh;
-  display: flex;
-  align-items: center;
-}
+  height:100%;
 
+}
+.card-body{
+  padding: 0px;
+}
+.card{
+  height: 100vh;
+}
+.card-footer{
+  position: absolute;
+  bottom: 0px;
+}
 .input-area input[type="text"] {
   width: 108%;
   height: 40px;
@@ -19,34 +27,32 @@
   border: 3px solid #0e1c2a;
 }
 
-button#chat {
+#chat {
   width: 100%;
-  height: 40px;
+  
   outline: none;
-  border: 3px solid #0e1c2a;
-  border-radius: 0px 200px 200px 0px;
   cursor: pointer;
-  font-size: 1.4em;
+  font-size: 1.4rem;
   color: white;
-  background-color: #0e1c2a;
-  transition: all 0.2s ease-in-out;
-}
-
-button#chat:hover {
-  color: #0e1c2a;
-
+  text-align: center;
   background-color: white;
+  border-radius: 5px;
+  color:#518cca;
 }
 
-button#chat svg {
-  margin-left: -8px;
+#chat:hover {
+  color: #0e1c2a;;
 }
 
 .chat-area {
-  height: 80.98vh;
+  height: 85.98vh;
   overflow-y: scroll;
+  margin-bottom: 40px;
 }
-
+.chat-area>div{
+  padding-right: 10px;
+  margin-bottom: 50px;
+}
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -65,6 +71,8 @@ button#chat svg {
 }
 
 .card .card-footer {
+ 
+  width: 100%;
   background-color: #518cca;
 }
 
@@ -72,9 +80,7 @@ button#chat svg {
   padding-right: 4px;
 }
 
-.card-body {
-  height: 83.9vh;
-}
+
 
 .chat-area .u_message {
   display: flex;

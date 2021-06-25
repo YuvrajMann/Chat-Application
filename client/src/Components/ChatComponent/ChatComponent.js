@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import io from "socket.io-client";
 import { ChatRender } from "./chatRender";
 import "./ChatComponent.css";
-import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
+import { Card, CardHeader, CardBody, CardFooter,Row,Col,Container } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,6 +12,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import InfoBar from "./InfoBarComponent";
 import { Redirect } from "react-router-dom";
+import {Editor, EditorState} from 'draft-js';
+
 let socket;
 class ChatComponent extends Component {
   constructor(props) {
@@ -22,11 +24,13 @@ class ChatComponent extends Component {
       chatMessages: [],
       exited: false,
       users: [],
+      editorState: EditorState.createEmpty()
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleExit = this.handleExit.bind(this);
     this.handleGetParticipants = this.handleGetParticipants.bind(this);
+    this.onChange = editorState => this.setState({editorState});
   }
 
   componentDidMount() {
@@ -71,16 +75,18 @@ class ChatComponent extends Component {
     this.setState({ chatMessage: event.target.value });
   };
   handleSubmit = (event) => {
+    let message=this.state.editorState.getCurrentContent().getPlainText('\u0001');
     this.setState({
       chatMessages: this.state.chatMessages.concat({
         username: this.props.username,
-        message: this.state.chatMessage,
+        message: message,
       }),
       chatMessage: "",
+      editorState: EditorState.createEmpty()
     });
     socket.emit("chat-message", {
       userName: this.props.username,
-      message: this.state.chatMessage,
+      message: message,
       roomId: this.props.roomId,
     });
   };
@@ -94,14 +100,15 @@ class ChatComponent extends Component {
     }
   };
   render() {
+    console.log(this.state.editorState.getCurrentContent().getPlainText('\u0001'));
     if (this.state.exited) {
       return <Redirect to="/login" />;
     }
     return (
       <div className="chat-component">
-        <div className="container">
-          <div className="row">
-            <div className=" col-md-10 mx-auto">
+        <Container>
+          <Row>
+            <Col md={10} sm={12} className="mx-auto">
               <Card>
                 <CardHeader>
                   <InfoBar
@@ -122,19 +129,15 @@ class ChatComponent extends Component {
                   </div>
                 </CardBody>
                 <CardFooter>
+                
                   <div className="input-area">
                     <div className="container">
                       <div className="row">
-                        <div className="col-10">
-                          <input
-                            type="text"
-                            label="text-message"
-                            value={this.state.chatMessage}
-                            onChange={this.handleChange}
-                          ></input>
+                        <div className="col-10" style={{backgroundColor:'white',padding:'5px',borderRadius:'5px'}}>
+                        <Editor placeholder="Type a message"  editorState={this.state.editorState} onChange={this.onChange} />
                         </div>
                         <div className="col-2">
-                          <button
+                          <div
                             type="submit"
                             id="chat"
                             onClick={this.handleSubmit}
@@ -142,16 +145,16 @@ class ChatComponent extends Component {
                             <FontAwesomeIcon
                               icon={faPaperPlane}
                             ></FontAwesomeIcon>
-                          </button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </CardFooter>
               </Card>
-            </div>
-          </div>
-        </div>
+            </Col>
+          </Row>
+        </Container>
         </div>
       
     );
