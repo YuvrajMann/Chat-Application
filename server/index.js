@@ -5,8 +5,14 @@ const portNumber = "5000";
 var server = http.createServer(app);
 const io = require("socket.io")(server);
 const Users = require("./users");
+const express = require('express');
 const cors=require('cors');
-app.use('cors');
+app.use(cors());
+app.get('/',((req,res,next)=>{
+  res.statusCode=200;
+  res.end('Connected correctly to the server');
+}));
+
 io.on("connection", (socket) => {
   socket.on("join", ({ userName, roomId }) => {
     socket.join(roomId);
@@ -58,6 +64,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(portNumber, () => {
-  console.log(`listening on http://${hostName}:${portNumber}`);
-});
+server.listen(process.env.PORT || 5000, () => console.log(`Server has started.`));

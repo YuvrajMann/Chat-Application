@@ -30,7 +30,7 @@ class ChatComponent extends Component {
   }
 
   componentDidMount() {
-    socket = io("http://localhost:5000");
+    socket = io("https://chat11app.herokuapp.com/");
     socket.emit("join", {
       userName: this.props.username,
       roomId: this.props.roomId,
